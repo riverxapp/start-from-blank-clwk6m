@@ -3,64 +3,927 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edit Me</title>
+  <title>Driftwood Coffee Co. — Est. 1912 · Portland, Oregon</title>
+  <meta name="description" content="Driftwood Coffee Co. Purveyors of fine small-batch coffee since 1912. Roasted slow, poured proper, on Elm Street in Portland, Oregon." />
+  <meta name="theme-color" content="#f2e7d3" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Oswald:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      color-scheme: light;
+      --ink: #241a12;
+      --ink-soft: #4a3826;
+      --paper: #f2e7d3;
+      --paper-deep: #eadbbf;
+      --coffee: #5a4030;
+      --oxblood: #7c2d1e;
+      --gold: #a97f3c;
+      --line: #c8b28c;
+      --muted: #7d6b52;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #ffffff;
-      color: #111111;
-      font-family: "Inter", sans-serif;
+    html {
+      scroll-behavior: smooth;
     }
 
-    main {
-      width: min(28rem, calc(100vw - 2rem));
+    body {
+      margin: 0;
+      background-color: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      color: var(--ink);
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 1.06rem;
+      line-height: 1.65;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 58%, rgba(36, 26, 18, 0.16));
+      z-index: 90;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--paper);
+    }
+
+    h1, h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      line-height: 1.08;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .container {
+      width: min(66rem, calc(100% - 3rem));
+      margin-inline: auto;
+    }
+
+    .narrow {
+      width: min(42rem, calc(100% - 3rem));
+      margin-inline: auto;
+    }
+
+    .kicker {
+      font-family: "Oswald", sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.42em;
+      font-size: 0.72rem;
+      color: var(--oxblood);
+      display: block;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: "Oswald", sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.74rem;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 1rem 1.9rem 0.9rem;
+      background: transparent;
+      box-shadow: 4px 4px 0 var(--ink);
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+
+    .btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    .btn.solid {
+      background: var(--ink);
+      color: var(--paper);
+      box-shadow: 4px 4px 0 var(--gold);
+    }
+
+    .btn.solid:hover {
+      box-shadow: 2px 2px 0 var(--gold);
+    }
+
+    .btn:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--oxblood);
+      outline-offset: 3px;
+    }
+
+    .rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.1rem;
+      margin: 2.75rem 0;
+    }
+
+    .rule::before,
+    .rule::after {
+      content: "";
+      height: 1px;
+      background: var(--line);
+      flex: 1;
+      max-width: 11rem;
+    }
+
+    .rule svg {
+      width: 0.65rem;
+      height: 0.65rem;
+      fill: var(--gold);
+      flex: none;
+    }
+
+    .topbar {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-family: "Oswald", sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+    }
+
+    .topbar .diamond {
+      color: var(--gold);
+      font-size: 0.55rem;
+      vertical-align: 0.1em;
+      margin-inline: 1.1em;
+    }
+
+    header.masthead {
+      text-align: center;
+      padding: 2.6rem 1rem 1.6rem;
+      border-bottom: 3px double var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand svg {
+      width: 3rem;
+      height: 3rem;
+      color: var(--coffee);
+    }
+
+    .brand-name {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-family: "Oswald", sans-serif;
+      font-weight: 400;
+      font-size: 0.66rem;
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand-sub::before,
+    .brand-sub::after {
+      content: "";
+      width: 2.6rem;
+      height: 1px;
+      background: var(--line);
+    }
+
+    nav.main-nav {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    nav.main-nav a {
+      font-family: "Oswald", sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: 0.74rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      padding: 0.3rem 0.4rem;
+      transition: color 150ms ease;
+    }
+
+    nav.main-nav a:hover {
+      color: var(--oxblood);
+    }
+
+    nav.main-nav a:not(:last-child)::after {
+      content: "\25C6";
+      color: var(--gold);
+      font-size: 0.5rem;
+      margin-left: 1.6rem;
+      vertical-align: 0.25em;
+    }
+
+    .hero {
+      padding: 4.5rem 0 5rem;
+    }
+
+    .hero-inner {
+      position: relative;
+      border: 1px solid var(--line);
+      background-image:
+        radial-gradient(circle, var(--gold) 0 2.5px, transparent 3.5px),
+        radial-gradient(circle, var(--gold) 0 2.5px, transparent 3.5px),
+        radial-gradient(circle, var(--gold) 0 2.5px, transparent 3.5px),
+        radial-gradient(circle, var(--gold) 0 2.5px, transparent 3.5px);
+      background-position: 8px 8px, calc(100% - 13px) 8px, 8px calc(100% - 13px), calc(100% - 13px) calc(100% - 13px);
+      background-repeat: no-repeat;
+    }
+
+    .hero-inner::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid var(--line);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      text-align: center;
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.9rem, 7vw, 5.4rem);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-copy h1 em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--oxblood);
+    }
+
+    .hero-copy .lede {
+      font-size: 1.22rem;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 33rem;
+      margin: 0 auto 2.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+    }
+
+    .stamp {
+      position: absolute;
+      top: -2.9rem;
+      right: -2.9rem;
+      width: clamp(7.5rem, 12vw, 9.75rem);
+      height: auto;
+      color: var(--oxblood);
+      opacity: 0.92;
+      filter: drop-shadow(1px 2px 0 rgba(36, 26, 18, 0.15));
+    }
+
+    @keyframes turn {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .stamp {
+        animation: turn 32s linear infinite;
+      }
+    }
+
+    section {
+      padding: 5.5rem 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 40rem;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    }
+
+    .section-head .sub {
+      font-style: italic;
+      color: var(--muted);
+      margin: 1.1rem 0 0;
+    }
+
+    .fare {
+      background: var(--paper-deep);
+      border-block: 1px solid var(--line);
+    }
+
+    .frame {
+      position: relative;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px dashed var(--line);
+      pointer-events: none;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 4.5rem;
+    }
+
+    .group-title {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-family: "Oswald", sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      font-size: 0.82rem;
+      color: var(--oxblood);
+      margin: 0 0 1.8rem;
       text-align: center;
     }
 
-    .icon {
-      width: 3rem;
-      height: 3rem;
-      margin: 0 auto 1rem;
-      display: block;
-      color: #111111;
+    .group-title::before,
+    .group-title::after {
+      content: "";
+      height: 1px;
+      background: var(--line);
+      flex: 1;
     }
 
-    h1 {
-      margin: 0 0 0.5rem;
-      font-size: 1.5rem;
+    .dish {
+      margin-bottom: 1.9rem;
+    }
+
+    .dish:last-child {
+      margin-bottom: 0;
+    }
+
+    .dish-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    .dish-head h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 700;
+      font-size: 1.18rem;
+      margin: 0;
+      letter-spacing: 0.01em;
+    }
+
+    .dots {
+      flex: 1;
+      border-bottom: 2px dotted var(--line);
+      transform: translateY(-0.3rem);
+      min-width: 2rem;
+    }
+
+    .price {
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    .dish p {
+      margin: 0.35rem 0 0;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 30rem;
+    }
+
+    .footnote {
+      text-align: center;
+      font-style: italic;
+      color: var(--muted);
+      margin: 3rem 0 0;
+      font-size: 0.98rem;
+    }
+
+    .story {
+      background-color: var(--ink);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)' opacity='0.07'/%3E%3C/svg%3E");
+      color: #d9c8ae;
+    }
+
+    .story .kicker {
+      color: var(--gold);
+      text-align: center;
+    }
+
+    .story h2 {
+      color: var(--paper);
+      text-align: center;
+    }
+
+    .story-body {
+      margin-top: 2.4rem;
+    }
+
+    .story-body p {
+      margin: 0 0 1.4rem;
+      font-size: 1.12rem;
+    }
+
+    .dropcap::first-letter {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      font-size: 3.6em;
+      float: left;
+      line-height: 0.78;
+      padding: 0.12em 0.16em 0 0;
+      color: var(--gold);
+    }
+
+    .pull-quote {
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      line-height: 1.35;
+      color: var(--paper);
+      text-align: center;
+      margin: 3rem auto;
+      max-width: 30rem;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 1.1rem;
+      font-family: "Oswald", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .stats {
+      display: flex;
+      margin-top: 4rem;
+      padding-top: 2.8rem;
+      border-top: 1px solid rgba(217, 200, 174, 0.25);
+    }
+
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding-inline: 1rem;
+    }
+
+    .stat + .stat {
+      border-left: 1px solid rgba(217, 200, 174, 0.25);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      color: var(--gold);
+      line-height: 1.1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 0.6rem;
+      font-family: "Oswald", sans-serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #b7a184;
+    }
+
+    .visit-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: stretch;
+    }
+
+    .card h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 900;
+      font-size: 1.7rem;
+      text-align: center;
+      margin: 0 0 1.8rem;
+    }
+
+    .hours-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hours-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.7rem 0;
+    }
+
+    .hours-list .day {
       font-weight: 600;
     }
 
-    p {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #444444;
+    .hours-list .time {
+      font-family: "Oswald", sans-serif;
+      font-weight: 400;
+      font-size: 0.86rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    .address {
+      font-style: normal;
+      text-align: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .address strong {
+      display: block;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .address a {
+      color: var(--oxblood);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .card .note {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.99rem;
+      margin: 0 0 1.8rem;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    footer.site-footer {
+      background: var(--ink);
+      color: #b7a184;
+      text-align: center;
+      padding: 3.5rem 1rem 3rem;
+      border-top: 3px double var(--line);
+    }
+
+    footer .brand-name {
+      font-size: 1.6rem;
+      color: var(--paper);
+    }
+
+    footer .tagline {
+      font-style: italic;
+      margin: 0.9rem 0 1.8rem;
+      color: #d9c8ae;
+    }
+
+    footer nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 2.2rem;
+    }
+
+    footer nav a {
+      font-family: "Oswald", sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #b7a184;
+      text-decoration: none;
+    }
+
+    footer nav a:hover {
+      color: var(--paper);
+    }
+
+    footer .colophon {
+      font-family: "Oswald", sans-serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #8d7a5f;
+      border-top: 1px solid rgba(217, 200, 174, 0.2);
+      padding-top: 1.6rem;
+      display: inline-block;
+    }
+
+    .js [data-reveal] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .js [data-reveal].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    @media (max-width: 62rem) {
+      .stamp {
+        position: static;
+        display: block;
+        margin: 2.75rem auto 0;
+      }
+    }
+
+    @media (max-width: 54rem) {
+      .menu-grid,
+      .visit-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 2.2rem;
+      }
+
+      .stat + .stat {
+        border-left: none;
+      }
+    }
+
+    @media (max-width: 34rem) {
+      nav.main-nav a:not(:last-child)::after {
+        margin-left: 0.9rem;
+      }
+
+      .topbar .diamond {
+        margin-inline: 0.5em;
+      }
     }
   </style>
 </head>
-<body>
+<body id="top">
+  <div class="topbar">
+    Est. 1912 <span class="diamond">&#9670;</span> Purveyors of Fine Coffee <span class="diamond">&#9670;</span> Portland, Oregon
+  </div>
+
+  <header class="masthead">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M10 19h22v9a9 9 0 0 1-9 9h-4a9 9 0 0 1-9-9v-9Z" />
+        <path d="M32 21h3a4.5 4.5 0 0 1 0 9h-3" />
+        <path d="M9 42h30" />
+        <path d="M17 7c-2 2.6 2 3.9 0 6.5M24 6c-2 2.6 2 3.9 0 6.5M31 7c-2 2.6 2 3.9 0 6.5" />
+      </svg>
+      <span class="brand-name">Driftwood</span>
+      <span class="brand-sub">Coffee Co. &mdash; Elm Street</span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="#menu">Bill of Fare</a>
+      <a href="#story">Our Story</a>
+      <a href="#visit">Visit Us</a>
+    </nav>
+  </header>
+
   <main>
-    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 3L4 7V12C4 17 7.4 20.9 12 22C16.6 20.9 20 17 20 12V7L12 3Z" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M9.5 12L11.25 13.75L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    <h1>Open for Editing</h1>
-    <p>Agent: edit this page freely and keep it simple.</p>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="kicker">Roasted in-house every morning</span>
+            <h1>A Proper Cup<br />of <em>Coffee</em></h1>
+            <p class="lede">Small-batch beans roasted on the premises and poured without hurry since nineteen twelve. Take the seat by the window and let the world wait.</p>
+            <div class="hero-actions">
+              <a class="btn solid" href="#menu">See the Bill of Fare</a>
+              <a class="btn" href="#visit">Find the Shop</a>
+            </div>
+          </div>
+          <svg class="stamp" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+            <defs>
+              <path id="ring" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0" />
+            </defs>
+            <circle cx="60" cy="60" r="57" stroke="currentColor" stroke-width="1.5" />
+            <circle cx="60" cy="60" r="53.5" stroke="currentColor" stroke-width="0.75" />
+            <circle cx="60" cy="60" r="31" stroke="currentColor" stroke-width="0.75" />
+            <text fill="currentColor" font-family="Oswald, sans-serif" font-size="10.2" letter-spacing="2.4">
+              <textPath href="#ring">DRIFTWOOD COFFEE CO. &#183; SMALL BATCH ROASTERS &#183; EST. 1912 &#183;</textPath>
+            </text>
+            <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <path d="M47 54h26v6.5a8.5 8.5 0 0 1-8.5 8.5h-9A8.5 8.5 0 0 1 47 60.5V54Z" />
+              <path d="M73 56h2.5a4 4 0 0 1 0 8H73" />
+              <path d="M46 76h28" />
+              <path d="M56 44c-1.4 1.8 1.4 2.7 0 4.5M64 43.5c-1.4 1.8 1.4 2.7 0 4.5" />
+            </g>
+          </svg>
+        </div>
+        <div class="rule" aria-hidden="true">
+          <svg viewBox="0 0 10 10"><path d="M5 0l5 5-5 5-5-5z" /></svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="fare" id="menu">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="kicker">The Bill of Fare</span>
+          <h2>Espresso &amp; Provisions</h2>
+          <p class="sub">Priced honestly, brewed properly. No beans leave the house more than ten days off roast.</p>
+        </div>
+        <div class="frame" data-reveal>
+          <div class="menu-grid">
+            <div>
+              <h3 class="group-title">From the Bar</h3>
+              <article class="dish">
+                <div class="dish-head"><h3>House Espresso</h3><span class="dots"></span><span class="price">$3.50</span></div>
+                <p>Our signature blend of washed Colombian and natural Brazilian, drawn as a classic double.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Flat White</h3><span class="dots"></span><span class="price">$4.75</span></div>
+                <p>Double ristretto beneath silk microfoam. Served short and strong, the way it ought to be.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Pour Over</h3><span class="dots"></span><span class="price">$5.50</span></div>
+                <p>A rotating single origin, brewed by the cup. Ask the counter what is on the shelf today.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Brown Sugar Cortado</h3><span class="dots"></span><span class="price">$4.75</span></div>
+                <p>Equal parts espresso and steamed milk, sweetened gently with burnt sugar syrup.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Honey Lavender Latte</h3><span class="dots"></span><span class="price">$6.00</span></div>
+                <p>House lavender syrup and raw wildflower honey, crowned with whole milk foam.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Maple Cold Brew</h3><span class="dots"></span><span class="price">$5.75</span></div>
+                <p>Steeped eighteen hours, served over ice with dark maple and a measure of cream.</p>
+              </article>
+            </div>
+            <div>
+              <h3 class="group-title">From the Oven</h3>
+              <article class="dish">
+                <div class="dish-head"><h3>Cardamom Bun</h3><span class="dots"></span><span class="price">$4.25</span></div>
+                <p>Swedish-style bun laminated with butter and cardamom sugar, baked each morning.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Butter Croissant</h3><span class="dots"></span><span class="price">$3.75</span></div>
+                <p>Laminated over three days for a shattering crust and a tender, honeycombed heart.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Sourdough Toast &amp; Jam</h3><span class="dots"></span><span class="price">$4.50</span></div>
+                <p>Thick-cut levain from our own starter, with seasonal preserves from the valley.</p>
+              </article>
+              <article class="dish">
+                <div class="dish-head"><h3>Ginger Molasses Cookie</h3><span class="dots"></span><span class="price">$3.00</span></div>
+                <p>Chewy, crackle-topped, and unapologetically spiced. Pairs handsomely with espresso.</p>
+              </article>
+              <div class="rule" aria-hidden="true">
+                <svg viewBox="0 0 10 10"><path d="M5 0l5 5-5 5-5-5z" /></svg>
+              </div>
+              <p class="footnote" style="margin-top: 0;">Whole beans, twelve ounces, bagged to order &mdash; market price.<br />Ask after this week&rsquo;s single origin.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="container">
+        <div class="narrow" data-reveal>
+          <span class="kicker">Our Story</span>
+          <h2>From a Secondhand Roaster</h2>
+          <div class="story-body">
+            <p class="dropcap">Driftwood began in the spring of nineteen twelve with a secondhand drum roaster, a borrowed counter, and one stubborn conviction: that a neighborhood deserves coffee made with patience. Four generations later, the drum still turns each morning before the lamps are lit out front.</p>
+            <p>We buy from six farms we know by name, roast in batches small enough to taste, and pour every cup as if the person across the counter had come a long way to sit exactly there.</p>
+          </div>
+          <blockquote class="pull-quote">
+            &ldquo;Drink your coffee slowly, and with reverence.&rdquo;
+            <cite>House Rule No. 1</cite>
+          </blockquote>
+        </div>
+        <div class="stats" data-reveal>
+          <div class="stat"><strong>114</strong><span>Years on Elm Street</span></div>
+          <div class="stat"><strong>Six</strong><span>Farms, Known by Name</span></div>
+          <div class="stat"><strong>Ten Days</strong><span>The Most a Bean Waits</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fare" id="visit">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="kicker">Hours &amp; Whereabouts</span>
+          <h2>Pay Us a Visit</h2>
+          <p class="sub">Two blocks off the waterfront, beside the bookshop. Look for the copper kettle over the door.</p>
+        </div>
+        <div class="visit-cards">
+          <div class="frame card" data-reveal>
+            <h3>Hours of Business</h3>
+            <ul class="hours-list">
+              <li><span class="day">Monday &ndash; Friday</span><span class="dots"></span><span class="time">6:30 &ndash; 5:00</span></li>
+              <li><span class="day">Saturday</span><span class="dots"></span><span class="time">7:00 &ndash; 5:00</span></li>
+              <li><span class="day">Sunday</span><span class="dots"></span><span class="time">8:00 &ndash; 3:00</span></li>
+            </ul>
+            <p class="footnote" style="margin-top: 1.8rem;">Holiday hours posted in the window.</p>
+          </div>
+          <div class="frame card" data-reveal>
+            <h3>Find the Shop</h3>
+            <address class="address">
+              <strong>214 Elm Street</strong>
+              Portland, Oregon<br />
+              <a href="tel:+15035550142">(503) 555-0142</a>
+            </address>
+            <p class="note">Laptops are welcome before noon on weekdays. Weekends belong to conversation. The number twelve bus stops at our door.</p>
+            <p class="center" style="margin: 0;">
+              <a class="btn" href="https://www.openstreetmap.org/search?query=214%20Elm%20Street%20Portland%20OR" target="_blank" rel="noopener">Open the Map</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="brand-name">Driftwood Coffee Co.</div>
+      <p class="tagline">Roasted slow. Poured proper. Portland, Oregon.</p>
+      <nav aria-label="Footer">
+        <a href="#menu">Bill of Fare</a>
+        <a href="#story">Our Story</a>
+        <a href="#visit">Visit Us</a>
+      </nav>
+      <span class="colophon">&copy; MMXXVI Driftwood Coffee Co. &middot; Est. MCMXII</span>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js");
+    const revealed = document.querySelectorAll("[data-reveal]");
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.12 }
+    );
+    revealed.forEach((el) => io.observe(el));
+  </script>
 </body>
 </html>
